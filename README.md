@@ -12,7 +12,7 @@
 
 2 - Open `Dockerfile` and modify `POSTGRES_PASSWORD` and `POSTGRES_DB` environment variables to a value you prefer.  
 
-3 - Create a `.env` file in the root of this project with the following environment variables :
+3 - Create a `.env` file in the root of this project with the following environment variables. Make sure `DB_PASSWORD` and `DB_NAME` are exactly the same as in the Dockerfile:
 
 ```js
 SERVER_PORT = 5880
@@ -20,10 +20,10 @@ SERVER_UNEXPECTED_ERROR_MESSAGE = "The server couldn't process the request."
 SERVER_INVALID_TOKEN_ERROR_MESSAGE = "No token provided or token is invalid"
 
 DB_USER = "postgres"
-DB_PASSWORD = "postgres" //change this
+DB_PASSWORD = "same-password-as-in-Dockerfile"
 DB_HOST = "localhost"
 DB_PORT = 5432
-DB_NAME = "appsmanagerdb" //change this
+DB_NAME = "same-database-as-in-Dockerfile"
 
 DB_ERROR_APP_NOT_FOUND = "App not found."
 DB_ERROR_USER_NOT_FOUND = "User not found."
