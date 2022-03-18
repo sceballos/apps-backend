@@ -34,11 +34,12 @@ INSERT INTO users (username, password, created_on, last_login) VALUES
 ('marco', 'michaelbestspirit', CURRENT_TIMESTAMP, NULL);
 
 INSERT INTO applications (name, description, created_on, modified_on) VALUES
-('Facebook', 'Social media to make friends. Is free! Unless you value your privacy!', CURRENT_TIMESTAMP, NULL),
-('Netflix', 'Looking for the most talked about TV shows and movies from the around the world? They’re all on Netflix.', CURRENT_TIMESTAMP, NULL),
-('Instagram', 'Connect with friends, share what youre up to, or see whats new from others all over the world. Explore our community where you can feel free to be yourself and share everything from your daily moments to lifes highlights.', CURRENT_TIMESTAMP, NULL),
-('Spotify: Music and Podcasts', 'With Spotify, you can listen to music and play millions of songs and podcasts for free. Stream music and podcasts you love and find music - or your next favorite song - from all over the world.', CURRENT_TIMESTAMP, NULL),
-('Telegram', 'Pure instant messaging — simple, fast, secure, and synced across all your devices. One of the worlds top 10 most downloaded apps with over 500 million active users.', CURRENT_TIMESTAMP, NULL),
-('Disney+', 'Disney+ is the streaming home of your favorite stories. With unlimited entertainment from Disney, Pixar, Marvel, Star Wars and National Geographic, theres always something to explore. Watch the latest releases, Original series and movies, classic films, and TV shows with new stories added every week.', CURRENT_TIMESTAMP, NULL),
-('Pinterest', 'New year, new inspiration. Explore billions of ideas to turn your dreams into reality.', CURRENT_TIMESTAMP, NULL),
-('TikTok', 'TikTok is THE destination for mobile videos. On TikTok, short-form videos are exciting, spontaneous, and genuine. Whether youre a sports fanatic, a pet enthusiast, or just looking for a laugh, there’s something for everyone on TikTok.', CURRENT_TIMESTAMP, NULL);
+('TEST-APP', 'Description of app that is going to be modified by the unit test.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Facebook', 'Social media to make friends. Is free! Unless you value your privacy!', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Netflix', 'Looking for the most talked about TV shows and movies from the around the world? They’re all on Netflix.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Instagram', 'Connect with friends, share what youre up to, or see whats new from others all over the world. Explore our community where you can feel free to be yourself and share everything from your daily moments to lifes highlights.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Spotify: Music and Podcasts', 'With Spotify, you can listen to music and play millions of songs and podcasts for free. Stream music and podcasts you love and find music - or your next favorite song - from all over the world.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Telegram', 'Pure instant messaging — simple, fast, secure, and synced across all your devices. One of the worlds top 10 most downloaded apps with over 500 million active users.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Disney+', 'Disney+ is the streaming home of your favorite stories. With unlimited entertainment from Disney, Pixar, Marvel, Star Wars and National Geographic, theres always something to explore. Watch the latest releases, Original series and movies, classic films, and TV shows with new stories added every week.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('Pinterest', 'New year, new inspiration. Explore billions of ideas to turn your dreams into reality.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('TikTok', 'TikTok is THE destination for mobile videos. On TikTok, short-form videos are exciting, spontaneous, and genuine. Whether youre a sports fanatic, a pet enthusiast, or just looking for a laugh, there’s something for everyone on TikTok.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);

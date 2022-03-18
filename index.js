@@ -5,30 +5,34 @@ const app = express();
 const port = process.env.SERVER_PORT;
 const database = require('./src/repository/database/postgresql');
 const auth = require('./src/auth/auth');
-const unexpectedError = { message : process.env.SERVER_UNEXPECTED_ERROR_MESSAGE};
+const unexpectedError = { message: process.env.SERVER_UNEXPECTED_ERROR_MESSAGE };
 
 app.use(express.urlencoded({
     extended: true
 }));
 
-app.use(express.json({limit: '50mb'}));
+app.use(express.json({ limit: '50mb' }));
 
 app.use(cors())
 app.options('*', cors());
 
 database.connect();
 
-app.get('/', function(req, res) {    
-    var result = { setup : "done"}
+const aritifcialDelay = 500; //Dev mode only. remove this on production
+
+app.get('/', function (req, res) {
+    var result = { setup: "done" }
     res.send(result);
 });
 
-app.get('/apps', async function(req, res) {    
+app.get('/apps', async function (req, res) {
+    await new Promise((r) => setTimeout(r, aritifcialDelay));
     var result = await database.getAllApps();
     res.json(result);
 });
 
-app.get('/apps/:id', async function(req, res) {
+app.get('/apps/:id', async function (req, res) {
+    await new Promise((r) => setTimeout(r, aritifcialDelay));
     try {
         const { id } = req.params;
         var result = await database.getApp(id);
@@ -38,7 +42,8 @@ app.get('/apps/:id', async function(req, res) {
     }
 });
 
-app.post('/apps/create', async function(req, res) {
+app.post('/apps/create', async function (req, res) {
+    await new Promise((r) => setTimeout(r, aritifcialDelay));
     const token = req.headers.authorization;
     if (!auth.isTokenValid(token)) {
         return res.status(403).json(auth.authErroMessage);
@@ -48,11 +53,13 @@ app.post('/apps/create', async function(req, res) {
         var result = await database.insertApp(appData, token);
         res.json(result);
     } catch (error) {
+        console.log(error);
         res.json(unexpectedError);
     }
 });
 
-app.post('/apps/update/:id', async function(req, res) {
+app.post('/apps/update/:id', async function (req, res) {
+    await new Promise((r) => setTimeout(r, aritifcialDelay));
     const token = req.headers.authorization;
     if (!auth.isTokenValid(token)) {
         return res.status(403).json(auth.authErroMessage);
@@ -67,7 +74,8 @@ app.post('/apps/update/:id', async function(req, res) {
     }
 });
 
-app.delete('/apps/delete', async function(req, res) {
+app.delete('/apps/delete', async function (req, res) {
+    await new Promise((r) => setTimeout(r, aritifcialDelay));
     const token = req.headers.authorization;
     if (!auth.isTokenValid(token)) {
         return res.status(403).json(auth.authErroMessage);
@@ -82,7 +90,8 @@ app.delete('/apps/delete', async function(req, res) {
 });
 
 
-app.post('/user/create', async function(req, res) {
+app.post('/user/create', async function (req, res) {
+    await new Promise((r) => setTimeout(r, aritifcialDelay));
     try {
         const userData = req.body;
         var result = await database.createUser(userData);
@@ -92,7 +101,8 @@ app.post('/user/create', async function(req, res) {
     }
 });
 
-app.post('/user/login', async function(req, res) {
+app.post('/user/login', async function (req, res) {
+    await new Promise((r) => setTimeout(r, aritifcialDelay));
     try {
         const userData = req.body;
         var result = await database.checkUserLogin(userData);

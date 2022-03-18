@@ -153,21 +153,6 @@ describe(`/POST attempt to update an inexistent app using authorization Token`, 
     });
 });
 
-// describe(`/POST attempt to update an inexistent app NOT USING authorization Token`, () => {
-//     it('Should return an error message saying that the app could not be found', (done) => {
-//         chai.request(baseUrl)
-//             .post(`/apps/update/${inexistentAppId}`)
-//             .send({ name: util.generateRandomString(10), description: util.generateRandomString(10)})
-//             .end((err, res) => {
-//                 res.should.have.status(403);
-//                 res.body.should.be.a('object');
-//                 res.body.message.should.be.eql(invalidTokenMessage);
-//                 done();
-//             });
-//     });
-// });
-
-
 describe(`/POST attempt to update an app and change the name to an already existing one using authorization Token`, () => {
     it('Should return an error message saying that the app already exists', (done) => {        
         chai.request(baseUrl)
@@ -175,6 +160,7 @@ describe(`/POST attempt to update an app and change the name to an already exist
             .set('Authorization', DEV_SESSION_TOKEN)
             .send({ name: testAppName, description: util.generateRandomString(10)})
             .end((err, res) => {
+                console.log(res);
                 res.should.have.status(200);
                 res.body.should.be.a('object');
                 res.body.message.should.be.eql(appAlreadyExistMessage);
