@@ -53,7 +53,6 @@ app.post('/apps/create', async function (req, res) {
         var result = await database.insertApp(appData, token);
         res.json(result);
     } catch (error) {
-        console.log(error);
         res.json(unexpectedError);
     }
 });

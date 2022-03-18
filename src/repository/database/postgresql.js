@@ -28,7 +28,7 @@ module.exports = {
     },
 
     getAllApps : async function () {
-        let results = await client.query("SELECT * FROM applications ORDER BY modified_on DESC");
+        let results = await client.query("SELECT * FROM applications WHERE is_dev=FALSE ORDER BY modified_on DESC");
         return results.rows;
     },
 
@@ -64,27 +64,23 @@ module.exports = {
         let result = null;
         
         try {
-            console.log("aft");
             result = await client.query(`INSERT INTO applications
-            (name, description, created_on, modified_on)
-            VALUES ($1, $2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
+            (is_dev, name,description, created_on, modified_on)
+            VALUES (FALSE, $1, $2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
             RETURNING *;`,
             [appParams.name, appParams.description]);
-            console.log("aft");
         } catch (error) {
-            console.log(error);
             if (error.code == duplicationErrorCode && error.detail == `Key (name)=(${appParams.name}) already exists.`) {
                 return appAlreadyExistMessage;
             }
         }        
-        console.log(result);
         return result.rows[0];
     },
 
     deleteApps : async function (ids) {    
         
         let results = await client.query(`DELETE FROM applications
-                                        WHERE app_id = ANY($1::int[])
+                                        WHERE app_id = ANY($1::int[]) AND is_dev=FALSE
                                         RETURNING *;`,
                                         [ids]);
         return results.rows;

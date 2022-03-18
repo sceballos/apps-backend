@@ -160,7 +160,6 @@ describe(`/POST attempt to update an app and change the name to an already exist
             .set('Authorization', DEV_SESSION_TOKEN)
             .send({ name: testAppName, description: util.generateRandomString(10)})
             .end((err, res) => {
-                console.log(res);
                 res.should.have.status(200);
                 res.body.should.be.a('object');
                 res.body.message.should.be.eql(appAlreadyExistMessage);
