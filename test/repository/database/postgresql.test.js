@@ -5,7 +5,6 @@ var baseUrl = `http://localhost:${process.env.SERVER_PORT}`;
 let auth = require('./../../../src/auth/auth')
 let chai = require('chai');
 let chaiHttp = require('chai-http');
-let should = chai.should();
 let util = require('./../../util')
 chai.use(chaiHttp);
 
