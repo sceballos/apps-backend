@@ -46,3 +46,7 @@ LOGIN_USER_AND_PASSWORD_MUST_HAVE_VALUES = "You must provide username and passwo
 ## Running API Testing
 
 Just run `npm test` after initializing the database and server to run all unit test cases.
+
+## What's next?
+
+Now you can proceed and setup the [Apps Frontend](https://github.com/sceballos/apps-frontend) project.
