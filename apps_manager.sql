@@ -36,6 +36,7 @@ INSERT INTO users (username, password, created_on, last_login) VALUES
 
 INSERT INTO applications (name, is_dev, description, created_on, modified_on) VALUES
 ('TEST-APP', TRUE,'Description of app that is going to be modified by the unit test.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+('DEV-ALREADY-EXISTING', TRUE,'test will try to change the name of another app to this one and fail', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Facebook', FALSE, 'Social media to make friends. Is free! Unless you value your privacy!', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Netflix', FALSE, 'Looking for the most talked about TV shows and movies from the around the world? They’re all on Netflix.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
 ('Instagram', FALSE, 'Connect with friends, share what youre up to, or see whats new from others all over the world. Explore our community where you can feel free to be yourself and share everything from your daily moments to lifes highlights.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),

@@ -10,7 +10,7 @@ let util = require('./../../util')
 chai.use(chaiHttp);
 
 const testAppId = 1
-const testAppName = "TikTok"
+const testAppName = "DEV-ALREADY-EXISTING"
 const inexistentAppId = 324941
 const appsToDelete = []
 
