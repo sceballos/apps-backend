@@ -7,7 +7,7 @@ let chai = require('chai');
 let chaiHttp = require('chai-http');
 let util = require('./../../util')
 chai.use(chaiHttp);
-
+let should = chai.should();
 const testAppId = 1
 const testAppName = "DEV-ALREADY-EXISTING"
 const inexistentAppId = 324941
