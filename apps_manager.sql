@@ -13,7 +13,7 @@ DROP TABLE IF EXISTS applications;
 CREATE TABLE IF NOT EXISTS users (
     user_id serial PRIMARY KEY,
 	username VARCHAR ( 50 ) UNIQUE NOT NULL,
-	password VARCHAR ( 50 ) NOT NULL,
+	password VARCHAR ( 100 ) NOT NULL,
 	created_on TIMESTAMP NOT NULL,
     last_login TIMESTAMP
 );
@@ -28,11 +28,7 @@ CREATE TABLE IF NOT EXISTS applications (
 );
 
 INSERT INTO users (username, password, created_on, last_login) VALUES
-('superadminthatisnotactuallyanadmin', 'supersecretpassword', CURRENT_TIMESTAMP, NULL),
-('layla', 'password1', CURRENT_TIMESTAMP, NULL),
-('roger', 'rogeristhebest', CURRENT_TIMESTAMP, NULL),
-('carlos', 'isthisreal', CURRENT_TIMESTAMP, NULL),
-('marco', 'michaelbestspirit', CURRENT_TIMESTAMP, NULL);
+('layla', 'd303b27b29b3e876d16ae6e7c95c4acef9695515696b2a21b94110ae382bd97e', CURRENT_TIMESTAMP, NULL);
 
 INSERT INTO applications (name, is_dev, description, created_on, modified_on) VALUES
 ('TEST-APP', TRUE,'Description of app that is going to be modified by the unit test.', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),

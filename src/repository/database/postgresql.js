@@ -39,7 +39,7 @@ module.exports = {
         return result.rowCount > 0 ? result.rows[0] : notFoundMessage;
     },
 
-    updateApp : async function (id, appParams, token) {
+    updateApp : async function (id, appParams) {
         let result = null;
         
         try {
@@ -65,7 +65,7 @@ module.exports = {
         
         try {
             result = await client.query(`INSERT INTO applications
-            (is_dev, name,description, created_on, modified_on)
+            (is_dev, name, description, created_on, modified_on)
             VALUES (FALSE, $1, $2, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP)
             RETURNING *;`,
             [appParams.name, appParams.description]);
@@ -100,13 +100,15 @@ module.exports = {
             return userOrPasswordEmpty;
         }
         let results = null;
-        //todo hash the password
+
+        const hashedPassword = await auth.hashPassword(params.password);
+
         try {
             results = await client.query(`INSERT INTO users
             (username, password, created_on)
             VALUES ($1, $2, CURRENT_TIMESTAMP)
             RETURNING *;`,
-            [params.username, params.password]);
+            [params.username, hashedPassword]);
         } catch (error) {
             if (error.code == duplicationErrorCode && error.detail == `Key (username)=(${params.username}) already exists.`) {
                 return userAlreadyExistMessage;
@@ -127,9 +129,11 @@ module.exports = {
         if (this.hasEmptyLoginFields(params)) {
             return userOrPasswordEmpty;
         }
+        const hashedPassword = await auth.hashPassword(params.password);
+
         let results = await client.query(`SELECT username, created_on FROM users
         WHERE username = $1 AND password = $2`,
-        [params.username, params.password]);
+        [params.username, hashedPassword]);
         
         if (results.rowCount > 0) {
             let session = results.rows[0];
